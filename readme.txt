@@ -30,3 +30,31 @@ https://blog.csdn.net/microcosmv/article/details/62054835
 -t type
 指定要创建的密钥类型。可以使用：”rsa1”(SSH-1) “rsa”(SSH-2) “dsa”(SSH-2)
 ssh-keygen -t rsa -C "注释内容，一般为邮件地址"，生成的公钥后面会带上注释，
+
+三： Linux平台上使用
+
+cmder可以生成密钥对:
+1.私钥
+id_rsa
+
+2.公钥
+id_rsa.pub
+
+SSH密钥操作:
+1.win生成密钥对
+ssh-keygen -t rsa
+
+2.进入.SSH目录 
+cd C:\Users\Administrator\.ssh
+
+3.把公钥拷贝到linux下/root/.ssh目录下
+scp id_rsa.pub root@192.168.2.1:/root/.ssh
+
+4.在linux上把公钥改名
+mv id_rsa.pub authorized_keys
+
+5.客户端无口令测试-命令操作
+ssh root@192.168.2.1
+
+6.客户端无口令测试-文件传输
+scp index.php root@192.168.2.1:/root/
